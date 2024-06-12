@@ -6,13 +6,12 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:room_booking/constants/routes.dart';
 import 'package:room_booking/event_model.dart';
 import 'package:room_booking/views/admin_bookings.dart';
-import 'package:room_booking/views/admin_events_page.dart';
 import 'package:room_booking/views/event_details.dart';
 import 'package:room_booking/views/home_view.dart';
 import 'package:room_booking/views/login_admin_view.dart';
 import 'package:room_booking/views/login_user_view.dart';
 import 'package:room_booking/views/register_user_view.dart';
-import 'package:room_booking/views/user_events_page.dart';
+import 'package:room_booking/views/user_bookings_page.dart';
 import 'package:room_booking/views/verify_email_view.dart';
 
 void main() async {
@@ -41,7 +40,6 @@ class MyApp extends StatelessWidget {
         adminLoginRoute: (context) => const LoginAdminView(),
         userRegisterRoute: (context) => const RegisterView(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
-        adminEventsRoute: (context) => const AdminEventsPage(),
         homeView: (context) => const HomeView(),
         adminBookingsRoute: (context) => const AdminBookingsPage(),
       },
@@ -52,10 +50,10 @@ class MyApp extends StatelessWidget {
             builder: (context) => EventDetails(event),
           );
         }
-        if (settings.name == userEventsRoute) {
+        if (settings.name == userBookingsRoute) {
           final email = settings.arguments as String;
           return MaterialPageRoute(
-            builder: (context) => UserEventsPage(email),
+            builder: (context) => UserBookingsPage(email),
           );
         }
 

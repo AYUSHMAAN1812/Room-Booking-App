@@ -47,7 +47,7 @@ class HomeView extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed(
-                  adminEventsRoute,
+                  bookARoom,
                 );
               },
               child: const Text('Book A Room'),
@@ -64,7 +64,7 @@ class HomeView extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed(
-                  userEventsRoute,
+                  userBookingsRoute,
                 );
               },
               child: const Text('View Room Bookings'),

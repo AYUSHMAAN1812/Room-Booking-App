@@ -151,7 +151,7 @@ class _RegisterViewState extends State<RegisterView> {
                             final user = AuthService.firebase().currentUser;
                             if (user?.isEmailVerified ?? false) {
                               if (!context.mounted) return;
-                              Navigator.of(context).pushNamed(userEventsRoute);
+                              Navigator.of(context).pushNamed(userBookingsRoute);
                             } else {
                               await initializeUserToken(email,name);
                               if (!context.mounted) return;

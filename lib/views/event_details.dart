@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:room_booking/constants/routes.dart';
 import 'package:room_booking/event_model.dart';
-import 'package:room_booking/views/user_events_page.dart';
+import 'package:room_booking/views/user_bookings_page.dart';
 import '../helper_functions.dart';
 
 class EventDetails extends StatefulWidget {

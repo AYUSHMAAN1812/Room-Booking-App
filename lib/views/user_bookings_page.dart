@@ -13,15 +13,15 @@ final db = FirebaseFirestore.instance;
 final bookingCollection = db.collection('bookings');
 final userCollection = db.collection('users');
 
-class UserEventsPage extends StatefulWidget {
+class UserBookingsPage extends StatefulWidget {
   final String? email;
-  const UserEventsPage(this.email, {super.key});
+  const UserBookingsPage(this.email, {super.key});
 
   @override
-  State<UserEventsPage> createState() => _UserEventsPage();
+  State<UserBookingsPage> createState() => _UserBookingsPage();
 }
 
-class _UserEventsPage extends State<UserEventsPage> {
+class _UserBookingsPage extends State<UserBookingsPage> {
   Future<String?> getUserName(String email) async {
     try {
       final token = await MessagingService().getToken();

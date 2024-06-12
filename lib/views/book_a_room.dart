@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:room_booking/constants/routes.dart';
 import 'package:room_booking/event_model.dart';
 import 'package:room_booking/utilities/show_error_dialog.dart';
-import 'package:room_booking/views/user_events_page.dart';
+import 'package:room_booking/views/user_bookings_page.dart';
 
 import '../helper_functions.dart';
 
@@ -19,14 +19,14 @@ String _name = "";
   DateTime beginTime = DateTime.now();
   DateTime endTime = DateTime.now();
   bool showDate = false;
-class AdminEventsPage extends StatefulWidget {
-  const AdminEventsPage({super.key});
+class BookARoom extends StatefulWidget {
+  const BookARoom({super.key});
 
   @override
-  State<AdminEventsPage> createState() => _AdminEventsPageState();
+  State<BookARoom> createState() => _BookARoomState();
 }
 
-class _AdminEventsPageState extends State<AdminEventsPage> {
+class _BookARoomState extends State<BookARoom> {
   
 
   final _clubList = ["Kludge", "Lambda", "Robotix", "Torque"];
