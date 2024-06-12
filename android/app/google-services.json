@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "334917663328",
+    "project_id": "maan-room-booking-app",
+    "storage_bucket": "maan-room-booking-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334917663328:android:8459a04900f78456796105",
+        "android_client_info": {
+          "package_name": "dev.maan.room_booking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdQaDkFPsgZb9bH13cxFuVgTyhIPLGQxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
