@@ -11,6 +11,14 @@ import 'package:room_booking/views/user_events_page.dart';
 
 import '../helper_functions.dart';
 
+String _name = "";
+  bool _editForm = false;
+  String _editEventId = "";
+
+  String? _club;
+  DateTime beginTime = DateTime.now();
+  DateTime endTime = DateTime.now();
+  bool showDate = false;
 class AdminEventsPage extends StatefulWidget {
   const AdminEventsPage({super.key});
 
@@ -19,14 +27,7 @@ class AdminEventsPage extends StatefulWidget {
 }
 
 class _AdminEventsPageState extends State<AdminEventsPage> {
-  String? _name;
-  bool _editForm = false;
-  String _editEventId = "";
-
-  String? _club;
-  DateTime beginTime = DateTime.now();
-  DateTime endTime = DateTime.now();
-  bool showDate = false;
+  
 
   final _clubList = ["Kludge", "Lambda", "Robotix", "Torque"];
 
@@ -53,8 +54,8 @@ class _AdminEventsPageState extends State<AdminEventsPage> {
   Widget build(BuildContext context) {
     var args =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
-    if (args != null && args['name'] != null) {
-      _name = args['name'] as String;
+    if (args != null ) {
+      _name = args['name'];
     }
 
     final nameField = Container(
@@ -423,7 +424,7 @@ class _AdminEventsPageState extends State<AdminEventsPage> {
                     ],
                   ),
                   const SizedBox(height: 20.0),
-                  GetMyEvents(eventName: _name ?? "", update: editEvent),
+                  GetMyEvents(eventName: _name, update: editEvent),
                 ],
               ),
             ),
@@ -526,11 +527,11 @@ class GetMyEvents extends StatelessWidget {
   }
 }
 
-Stream<QuerySnapshot> getMyEvents(String eventName) {
+getMyEvents(String eventName) {
   if (eventName.isEmpty) {
-    return const Stream.empty();
+    return null;
   }
-  return bookingCollection.where('name', isEqualTo: eventName).snapshots();
+  return bookingCollection.where('name', isEqualTo: _name).snapshots();
 }
 
 class UserScheduleCard extends StatelessWidget {
