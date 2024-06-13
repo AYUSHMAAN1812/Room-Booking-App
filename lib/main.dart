@@ -59,9 +59,9 @@ class MyApp extends StatelessWidget {
           );
         }
         if (settings.name == userBookingsRoute) {
-          final String name = settings.arguments as String;
+          final String userName = settings.arguments as String;
           return MaterialPageRoute(
-            builder: (context) => UserEventsPage(name:name),
+            builder: (context) => UserEventsPage(userName),
           );
         }
 

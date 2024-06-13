@@ -11,9 +11,9 @@ final bookingCollection = db.collection('bookings');
 final userCollection = db.collection('users');
 
 class UserEventsPage extends StatelessWidget {
-  final userName;
+  final String userName;
 
-  const UserEventsPage({super.key, this.userName, required String name});
+  const UserEventsPage(this.userName,{super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class UserEventsPage extends StatelessWidget {
                     style: TextStyle(fontSize: 16.0, color: Colors.white),
                   ),
                   const SizedBox(height: 40.0),
-                  Schedule(name: userName ?? "Guest"),
+                  Schedule(name: userName),
                   const SizedBox(height: 30.0),
                 ],
               ),

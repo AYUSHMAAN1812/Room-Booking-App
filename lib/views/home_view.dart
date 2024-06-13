@@ -5,7 +5,7 @@ import 'package:room_booking/services/event/event_service.dart';
 import 'package:room_booking/utilities/show_error_dialog.dart';
 
 class HomeView extends StatefulWidget {
-  final email;
+  final String email;
   const HomeView(this.email, {super.key});
 
   @override
