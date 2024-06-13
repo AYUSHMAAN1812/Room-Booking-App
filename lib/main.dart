@@ -6,6 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:room_booking/constants/routes.dart';
 import 'package:room_booking/event_model.dart';
 import 'package:room_booking/views/admin_bookings.dart';
+import 'package:room_booking/views/book_a_room.dart';
 import 'package:room_booking/views/event_details.dart';
 import 'package:room_booking/views/home_view.dart';
 import 'package:room_booking/views/login_admin_view.dart';
@@ -40,8 +41,8 @@ class MyApp extends StatelessWidget {
         adminLoginRoute: (context) => const LoginAdminView(),
         userRegisterRoute: (context) => const RegisterView(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
-        homeView: (context) => const HomeView(),
         adminBookingsRoute: (context) => const AdminBookingsPage(),
+        bookARoom: (context) => const BookARoom(),
       },
       onGenerateRoute: (settings) {
         if (settings.name == eventDetails) {
@@ -50,10 +51,17 @@ class MyApp extends StatelessWidget {
             builder: (context) => EventDetails(event),
           );
         }
-        if (settings.name == userBookingsRoute) {
+        
+        if (settings.name == homeView) {
           final email = settings.arguments as String;
           return MaterialPageRoute(
-            builder: (context) => UserBookingsPage(email),
+            builder: (context) => HomeView(email),
+          );
+        }
+        if (settings.name == userBookingsRoute) {
+          final String name = settings.arguments as String;
+          return MaterialPageRoute(
+            builder: (context) => UserEventsPage(name:name),
           );
         }
 
@@ -77,6 +85,7 @@ class _HomepageState extends State<Homepage> {
     super.initState();
     setUpInteractedMessage();
   }
+
   Future<void> setUpInteractedMessage() async {
     FirebaseMessaging messaging = FirebaseMessaging.instance;
 
@@ -162,7 +171,6 @@ class _HomepageState extends State<Homepage> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -173,10 +181,14 @@ class _HomepageState extends State<Homepage> {
           children: [
             const Text(
               'ROOM BOOKINGS OF IITH',
-              style: TextStyle(color: Colors.white, fontSize: 40,),
-              
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 40,
+              ),
             ),
-            const SizedBox(height: 50.0,),
+            const SizedBox(
+              height: 50.0,
+            ),
             ElevatedButton(
               style: TextButton.styleFrom(
                 foregroundColor: Colors.purple,
@@ -193,7 +205,9 @@ class _HomepageState extends State<Homepage> {
               },
               child: const Text('Register as a User'),
             ),
-            const SizedBox(height: 50.0,),
+            const SizedBox(
+              height: 50.0,
+            ),
             ElevatedButton(
               style: TextButton.styleFrom(
                 foregroundColor: Colors.purple,
@@ -210,7 +224,9 @@ class _HomepageState extends State<Homepage> {
               },
               child: const Text('Login as a User'),
             ),
-            const SizedBox(height: 50.0,),
+            const SizedBox(
+              height: 50.0,
+            ),
             ElevatedButton(
               style: TextButton.styleFrom(
                 foregroundColor: Colors.purple,

@@ -137,7 +137,7 @@ class _LoginUserViewState extends State<LoginUserView> {
                                   // await initializeUserToken(email);
                                 if (!context.mounted) return;
                                 Navigator.of(context)
-                                    .pushNamed(homeView);
+                                    .pushNamed(homeView,arguments: _email.text);
                               } else {
                                 // user's email is not verified
                                 if (!context.mounted) return;

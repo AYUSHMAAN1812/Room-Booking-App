@@ -1,8 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:room_booking/constants/routes.dart';
+import 'package:room_booking/services/event/event_service.dart';
+import 'package:room_booking/utilities/show_error_dialog.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class HomeView extends StatefulWidget {
+  final email;
+  const HomeView(this.email, {super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+   Future<String?> getUserName(String email) async {
+    try {
+      final token = await MessagingService().getToken();
+      if (token != null) {
+        DocumentSnapshot doc = await FirestoreService().getUserDocument(email);
+        return doc["name"];
+      }
+    } catch (e) {
+      if (!mounted) return null;
+      showErrorDialog(context, 'Failed to get user data');
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +55,9 @@ class HomeView extends StatelessWidget {
           children: [
             const Text(
               'ROOM BOOKINGS OF IITH',
-              style: TextStyle(color: Colors.white, fontSize: 40,),
-              
+              style: TextStyle(color: Colors.white, fontSize: 40),
             ),
-            const SizedBox(height: 50.0,),
+            const SizedBox(height: 50.0),
             ElevatedButton(
               style: TextButton.styleFrom(
                 foregroundColor: Colors.purple,
@@ -52,7 +74,7 @@ class HomeView extends StatelessWidget {
               },
               child: const Text('Book A Room'),
             ),
-            const SizedBox(height: 50.0,),
+            const SizedBox(height: 50.0),
             ElevatedButton(
               style: TextButton.styleFrom(
                 foregroundColor: Colors.purple,
@@ -63,8 +85,10 @@ class HomeView extends StatelessWidget {
                 textStyle: const TextStyle(fontSize: 20.0),
               ),
               onPressed: () {
+                // Pass userName if needed
                 Navigator.of(context).pushNamed(
                   userBookingsRoute,
+                  arguments: getUserName(widget.email),
                 );
               },
               child: const Text('View Room Bookings'),

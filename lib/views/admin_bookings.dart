@@ -21,6 +21,7 @@ class _AdminBookingsPage extends State<AdminBookingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.purple.shade50,
       appBar: AppBar(
         foregroundColor: Colors.white,
