@@ -128,7 +128,7 @@ class Schedule extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () => Navigator.of(context)
-                        .pushNamed(eventDetails, arguments: bookings[index]),
+                        .pushNamed(userEventDetails, arguments: bookings[index]),
                     child: ScheduleCard(bookings[index]),
                   );
                 },
@@ -160,11 +160,8 @@ class ScheduleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(10.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
+    return Wrap(
+      children: [
           Expanded(
             child: SizedBox(
               height: 50.0,
@@ -192,11 +189,11 @@ class ScheduleCard extends StatelessWidget {
                                   booking.status,
                                   style: TextStyle(
                                     fontSize: 12.0,
-                                    color: booking.status == 'UnReserved'
-                                        ? Colors.orange
-                                        : booking.status == 'Reserved'
-                                            ? Colors.blue
-                                            : Colors.green,
+                                    color: booking.status == 'Pending'
+                                        ? Colors.red
+                                        : booking.status == 'Confirmed'
+                                            ? Colors.green
+                                            : Colors.blue,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -206,7 +203,7 @@ class ScheduleCard extends StatelessWidget {
 
                           // Appointment date
                           Text(checkDate(booking.beginTime)),
-                          Text(checkDate(booking.endTime)),
+                          // Text(checkDate(booking.endTime)),
 
                           // Event time
                           Column(
@@ -214,7 +211,7 @@ class ScheduleCard extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(getTime(booking.beginTime)),
-                                  Text(getTime(booking.endTime)),
+                                  // Text(getTime(booking.endTime)),
                                 ],
                               ),
                               Text(booking.room),
@@ -229,7 +226,7 @@ class ScheduleCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
+
     );
   }
 }

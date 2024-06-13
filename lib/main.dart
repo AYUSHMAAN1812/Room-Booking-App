@@ -13,6 +13,7 @@ import 'package:room_booking/views/login_admin_view.dart';
 import 'package:room_booking/views/login_user_view.dart';
 import 'package:room_booking/views/register_user_view.dart';
 import 'package:room_booking/views/user_bookings_page.dart';
+import 'package:room_booking/views/user_event_details.dart';
 import 'package:room_booking/views/verify_email_view.dart';
 
 void main() async {
@@ -49,6 +50,12 @@ class MyApp extends StatelessWidget {
           final event = settings.arguments as Event;
           return MaterialPageRoute(
             builder: (context) => EventDetails(event),
+          );
+        }
+        if (settings.name == userEventDetails) {
+          final event = settings.arguments as Event;
+          return MaterialPageRoute(
+            builder: (context) => UserEventDetails(event),
           );
         }
         

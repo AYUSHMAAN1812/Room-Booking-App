@@ -84,11 +84,11 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 textStyle: const TextStyle(fontSize: 20.0),
               ),
-              onPressed: () {
+              onPressed: () async{
                 // Pass userName if needed
                 Navigator.of(context).pushNamed(
                   userBookingsRoute,
-                  arguments: getUserName(widget.email),
+                  arguments: await getUserName(widget.email),
                 );
               },
               child: const Text('View Room Bookings'),
